@@ -1,0 +1,10 @@
+*.pyc
+RELEASE-VERSION
+MANIFEST
+setup.py
+.sconsign.dblite
+.ropeproject
+*.egg-info
+dist
+build
+paver-minilib.zip
