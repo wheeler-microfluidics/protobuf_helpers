@@ -15,7 +15,7 @@ CLANG_TYPE_KIND_TO_PROTOBUF_TYPE = OrderedDict([
     (TypeKind.SHORT, 'sint32'),
     (TypeKind.UCHAR, 'uint32'),
     (TypeKind.UINT, 'uint32'),
-    (TypeKind.ULONGLONG, 'uint64'),
+    (TypeKind.ULONG, 'uint64'),
     (TypeKind.USHORT, 'uint32'),
     (TypeKind.VOID, None),
     ((TypeKind.POINTER, TypeKind.UCHAR), 'bytes')])
@@ -23,3 +23,12 @@ CLANG_TYPE_KIND_TO_PROTOBUF_TYPE = OrderedDict([
 
 def underscore_to_camelcase(value):
     return ''.join(x.capitalize() if x else '_' for x in value.split('_'))
+
+
+def get_protobuf_type(clang_type_kind):
+    try:
+        return CLANG_TYPE_KIND_TO_PROTOBUF_TYPE[clang_type_kind]
+    except TypeError:
+        # This is an array type.
+        return (CLANG_TYPE_KIND_TO_PROTOBUF_TYPE[clang_type_kind['atom_type']],
+                'repeated')
