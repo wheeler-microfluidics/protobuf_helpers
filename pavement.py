@@ -13,7 +13,8 @@ setup(name='protobuf_helpers',
       author='Christian Fobel',
       url='https://github.com/wheeler-microfluidics/protobuf_helpers',
       license='GPL',
-      packages=['protobuf_helpers', ])
+      packages=['protobuf_helpers', ],
+      package_data={'protobuf_helpers': ['bin/*']})
 
 
 @task
