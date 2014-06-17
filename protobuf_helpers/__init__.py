@@ -1,6 +1,7 @@
 from collections import OrderedDict
 
-from clang.cindex import TypeKind
+from path_helpers import path
+from clang_helpers.clang.cindex import TypeKind
 
 
 CLANG_TYPE_KIND_TO_PROTOBUF_TYPE = OrderedDict([
@@ -32,3 +33,7 @@ def get_protobuf_type(clang_type_kind):
         # This is an array type.
         return (CLANG_TYPE_KIND_TO_PROTOBUF_TYPE[clang_type_kind['atom_type']],
                 'repeated')
+
+
+def package_path():
+    return path(__file__).parent

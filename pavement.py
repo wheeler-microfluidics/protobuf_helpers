@@ -13,6 +13,7 @@ setup(name='protobuf_helpers',
       author='Christian Fobel',
       url='https://github.com/wheeler-microfluidics/protobuf_helpers',
       license='GPL',
+      install_requires=['clang_helpers'],
       packages=['protobuf_helpers', ],
       package_data={'protobuf_helpers': ['bin/*']})
 
