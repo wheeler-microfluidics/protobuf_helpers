@@ -31,6 +31,9 @@ def get_protobuf_type(clang_type_kind):
         return CLANG_TYPE_KIND_TO_PROTOBUF_TYPE[clang_type_kind]
     except TypeError:
         # This is an array type.
+        if clang_type_kind['atom_type'] == TypeKind.UCHAR:
+            # This is a byte array.
+            return ('bytes', 'required')
         return (CLANG_TYPE_KIND_TO_PROTOBUF_TYPE[clang_type_kind['atom_type']],
                 'repeated')
 
